@@ -4,10 +4,12 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Container from "../components/container"
 import Img from "gatsby-image"
+import SEO from "../components/seo"
 
 export default function Home({data}) {
   return (
     <div>
+      <SEO/>
       {/* <Header /> */}
       <Container>
         <div style={{ display: 'flex', alignItems: 'center' }}>

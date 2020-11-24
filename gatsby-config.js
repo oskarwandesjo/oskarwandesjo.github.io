@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Oskar Wändesjö`,
     description: `Software engineering student at Lund University, Sweden`,
-    siteUrl: `https://oskarwandesjo.github.io/`,
+    url: `https://oskarwandesjo.github.io`,
     author: `Oskar Wändesjö`,
   },
   plugins: [
@@ -28,6 +28,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'en'
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
