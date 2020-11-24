@@ -1,10 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import Container from "../components/container"
+import Img from "gatsby-image"
 
-export default function Home() {
+export default function Home({data}) {
   return (
     <div>
       {/* <Header /> */}
@@ -12,11 +13,11 @@ export default function Home() {
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ width: '50%', padding: '0 10px 0 0' }}>
             <h1>Oskar Wändesjö<br />   ___   </h1>
-            <p>Currently studying a MSc Eng in information and communication technologies.</p>
+            <p>Currently studying a MSc Eng in information and communication technologies at Lund University.</p>
             <p>Check out my <a href="../../CV_Oskar_Wandesjo_Eng.pdf">resume</a>, contact <a href="mailto:oskar.wandesjo@gmail.com">me</a> or take a look at my <a href="https://www.linkedin.com/in/oskarwandesjo/">LinkedIn</a>.</p>
           </div>
           <div style={{ width: '50%', paddingTop: '10px'}}>
-            <img src="../../ProfilbildCV_rund mindre.png"></img>
+            <Img fluid={data.profilePicture.childImageSharp.fluid} alt="Oskar Wändesjö"/>
           </div>
         </div>
         {/* <div>
@@ -28,3 +29,15 @@ export default function Home() {
     </div>
   )
 }
+
+export const query = graphql`
+  query {
+    profilePicture: file(relativePath: {eq: "profile_picture.png"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+  }
+`
